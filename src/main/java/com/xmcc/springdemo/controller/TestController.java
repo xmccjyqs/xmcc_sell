@@ -19,6 +19,6 @@ public class TestController {
 //        logger.info("info");
 //        logger.debug("debug");
         log.info("msg {}","hello spring boot");
-        return "hello spring boot 2";
+        return "hello spring boot 2  第一次修改项目";
     }
 }
