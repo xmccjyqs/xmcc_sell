@@ -29,11 +29,71 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>org.hibernate</groupId>-->
+                    <!--<artifactId>hibernate-core</artifactId>-->
+                <!--</exclusion>-->
+                <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<groupId>org.jboss.logging</groupId>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<artifactId>jboss-logging</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
+                <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<groupId>net.bytebuddy</groupId>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<artifactId>byte-buddy</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
+                <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<groupId>com.fasterxml</groupId>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<artifactId>classmate</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
+                <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<groupId>javax.activation</groupId>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<artifactId>javax.activation-api</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.6</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.1.12</version>
+        </dependency>
+        <!--guava工具类 包含很多集合的创建方式 及guava缓存-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>27.0.1-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
         </dependency>
     </dependencies>
 
@@ -45,5 +105,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

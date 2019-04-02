@@ -1,9 +1,20 @@
-#server:
-#  port: 8888 #修改端口号 注意冒号后面需要有空格
-##日志配置
-#  logging:
-#    pattern:
-#      console: "%d-%msg%n"  #  控制台输出配置,%d：日期，%msg：信息 %n:换行
-#    file: D://weixin_sell//log//logback.log #日志输出文件位置
-#    level:
-#      root: debug #日志级别
+server:
+  port: 8888 #修改端口号 注意冒号后面需要有空格
+  servlet:
+    context-path: /sell #配置访问路径为 http://localhost:8888/sell/xxxx
+
+#druid相关配置
+spring:
+  druid:
+    url: jdbc:mysql://172.18.34.13:3306/sell?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: 123456
+    maxActive: 30 #最大链接数
+    maxWait: 10000 #获得链接的最大等待时间
+  jpa:
+        show-sql: true  #显示sql语句
+jackson:
+  date-format: yyyy-MM-dd HH:mm:ss  #日期格式化标准
+  default-property-inclusion: non_null  #返回json时 忽略null
+
