@@ -1,10 +1,13 @@
 package com.xmcc.springdemo.service.impl;
 
+import com.xmcc.springdemo.beans.ResultEnums;
 import com.xmcc.springdemo.beans.ResultResponse;
 import com.xmcc.springdemo.dao.impl.AbstractBatchDao;
 import com.xmcc.springdemo.entity.OrderDetail;
+import com.xmcc.springdemo.entity.OrderMaster;
 import com.xmcc.springdemo.repository.OrderDetailRepository;
 import com.xmcc.springdemo.service.OrderDetailService;
+import com.xmcc.springdemo.service.OrderMasterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +21,8 @@ public class OrderDetailServiceImpl extends AbstractBatchDao<OrderDetail> implem
 
     @Autowired
     private OrderDetailRepository orderDetailRepository;
+    @Autowired
+    private OrderMasterService orderMasterService;
 
     /**
      * 因为我们这儿的数据量很少 直接插入就可以了
@@ -34,6 +39,19 @@ public class OrderDetailServiceImpl extends AbstractBatchDao<OrderDetail> implem
     public void  batchInsert(List<OrderDetail> orderDetailList){
 
         super.batchInsert(orderDetailList);
+    }
+
+    @Override
+    public ResultResponse queryByOrderIdWithOrderMaster(String openid, String orderId) {
+        //这儿不用判断 因为在orderMasterService中判断了
+        ResultResponse<OrderMaster> orderMasterResult = orderMasterService.findByOrderIdAndOpenId(orderId, openid);
+        OrderMaster orderMaster = orderMasterResult.getData();
+        if(orderMasterResult.getCode()== ResultEnums.FAIL.getCode()||orderMaster==null){
+            return orderMasterResult;
+        }
+        ResultResponse<List<OrderDetail>> finalOrderDetailList = findOrderDetailListByOrderId(orderId);
+        orderMaster.setOrderDetailList(finalOrderDetailList.getData());
+        return orderMasterResult;
     }
 
     public ResultResponse< List<OrderDetail>> findOrderDetailListByOrderId(String orderId){
