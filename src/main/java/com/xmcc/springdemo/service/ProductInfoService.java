@@ -19,4 +19,7 @@ public interface ProductInfoService {
     //修改商品库存
     void updateProduct(ProductInfo productInfo);
 
+    //
+    ResultResponse<Integer> incrStockById(Integer productQuantity, String productId);
+
 }

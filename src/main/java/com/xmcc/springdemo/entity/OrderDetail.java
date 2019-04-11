@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
@@ -33,4 +34,11 @@ public class OrderDetail implements Serializable {
 
     /** 商品小图. */
     private String productIcon;
+
+    /**
+     * 1 serialization会忽略掉
+     * 2 不跟数据库表做映射 就是表中没有这个字段
+     */
+    @Transient
+    private String productImage;
 }

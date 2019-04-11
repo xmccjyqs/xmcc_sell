@@ -1,15 +1,23 @@
 package com.xmcc.springdemo.service.impl;
 
+import com.xmcc.springdemo.beans.ResultResponse;
 import com.xmcc.springdemo.dao.impl.AbstractBatchDao;
 import com.xmcc.springdemo.entity.OrderDetail;
+import com.xmcc.springdemo.repository.OrderDetailRepository;
 import com.xmcc.springdemo.service.OrderDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderDetailServiceImpl extends AbstractBatchDao<OrderDetail> implements OrderDetailService {
+
+    @Autowired
+    private OrderDetailRepository orderDetailRepository;
 
     /**
      * 因为我们这儿的数据量很少 直接插入就可以了
@@ -26,5 +34,18 @@ public class OrderDetailServiceImpl extends AbstractBatchDao<OrderDetail> implem
     public void  batchInsert(List<OrderDetail> orderDetailList){
 
         super.batchInsert(orderDetailList);
+    }
+
+    public ResultResponse< List<OrderDetail>> findOrderDetailListByOrderId(String orderId){
+        //这儿应该提成一个业务方法的 ,这儿就不提了
+        List<OrderDetail>  orderDetailList= orderDetailRepository.findByOrderId(orderId);
+        //设置商品图片小图
+        if(!CollectionUtils.isEmpty(orderDetailList)) {
+            orderDetailList = orderDetailList.stream().map(orderDetail -> {
+                orderDetail.setProductIcon(orderDetail.getProductIcon());
+                return orderDetail;
+            }).collect(Collectors.toList());
+        }
+        return ResultResponse.success(orderDetailList);
     }
 }

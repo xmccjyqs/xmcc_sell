@@ -65,7 +65,7 @@ public class ProductInfoServiceImpl implements ProductInfoService {
 
         //判断id是否为空
         if(StringUtils.isBlank(productId)){
-            return ResultResponse.fail(ResultEnums.PARAM.getMsg()+":"+productId);
+            return ResultResponse.fail(ResultEnums.PARAM_ERROR.getMsg()+":"+productId);
         }
         //Optional 相当于一个容器，jpa 将我们的ProductInfo 封装在Optional中，提供了一些基本的验证ProductInfo对象的方法
         System.out.println("productId:--------"+productId);
@@ -90,5 +90,11 @@ public class ProductInfoServiceImpl implements ProductInfoService {
         productInfoRepository.save(productInfo);
     }
 
+    //修改库存
+    @Override
+    @Transactional
+    public ResultResponse<Integer> incrStockById(Integer productQuantity, String productId) {
+        return ResultResponse.success(productInfoRepository.productInfoRepository(productQuantity,productId));
+    }
 
 }
