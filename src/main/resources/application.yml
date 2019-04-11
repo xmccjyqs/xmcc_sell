@@ -6,7 +6,7 @@ server:
 #druid相关配置
 spring:
   druid:
-    url: jdbc:mysql://172.18.34.13:3306/sell?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    url: jdbc:mysql://172.18.34.7:3306/sell?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
     driverClassName: com.mysql.jdbc.Driver
     username: root
     password: 123456

@@ -28,6 +28,7 @@ public class ProductCategoryServiceImpl implements ProductCategoryService {
         Stream<ProductCategoryDto> productCategoryDtoStream = all.stream().map(productCategory -> ProductCategoryDto.adapt(productCategory));
         //把流转换成list
         List<ProductCategoryDto> collect = productCategoryDtoStream.collect(Collectors.toList());
+
         return collect;
     }
 

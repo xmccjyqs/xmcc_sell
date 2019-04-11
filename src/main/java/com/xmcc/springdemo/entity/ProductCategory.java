@@ -8,11 +8,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity//表示该类为实体类
-@DynamicUpdate //如果时间有值 数据库就不会更新为当前时间，加这个注解动态更新时间
-//@Data //相当于set、get、toString方法
-@Getter
-@Setter
-@ToString
+@DynamicUpdate //设置为true,表示update对象的时候,生成动态的update语句,如果这个字段的值是null就不会被加入到update语句中
+@Data //相当于set、get、toString方法g
 @AllArgsConstructor //全参构造
 @NoArgsConstructor //无参构造
 @Table(name="product_category") //表名
