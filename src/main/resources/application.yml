@@ -1,12 +1,13 @@
 server:
   port: 8888 #修改端口号 注意冒号后面需要有空格
+
   servlet:
-    context-path: /sell #配置访问路径为 http://localhost:8888/sell/xxxx
+    context-path: /sell  #配置访问路径为 http://localhost:8888/sell/xxxx
 
 #druid相关配置
 spring:
   druid:
-    url: jdbc:mysql://172.18.34.7:3306/sell?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    url: jdbc:mysql://172.18.34.9:3306/sell?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
     driverClassName: com.mysql.jdbc.Driver
     username: root
     password: 123456
@@ -17,4 +18,9 @@ spring:
 jackson:
   date-format: yyyy-MM-dd HH:mm:ss  #日期格式化标准
   default-property-inclusion: non_null  #返回json时 忽略null
+
+
+wechat:
+   appid: wxcec0b9e65c084712
+   secret: 05a7e861c1985ced86af77fb8f7163bc
 

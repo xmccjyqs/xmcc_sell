@@ -99,10 +99,10 @@
         <!-- 工具包 -->
 
         <!-- 加载静态资源 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
+        <!--</dependency>-->
 
         <!-- json格式转换-->
         <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
@@ -125,6 +125,13 @@
             <version>3.7</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-mp</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+      <!--  解决spring boot1.5以上版本@ConfigurationProperties取消location注解-->
 
     </dependencies>
 

@@ -1,0 +1,52 @@
+{
+  "errno": 0,
+  "data": {
+    "name": "重庆赵二老火锅",
+    "description": "蜂鸟专送",
+    "deliveryTime": 38,
+    "score": 4.2,
+    "serviceScore": 4.1,
+    "foodScore": 4.3,
+    "rankRate": 69.2,
+    "minPrice": 0,
+    "deliveryPrice": 0,
+    "ratingCount": 24,
+    "sellCount": 90,
+    "bulletin": "伊藤/世豪广场川味火锅人气前3名",
+    "supports": [
+      {
+        "type": 0,
+        "description": "在线支付满28减5"
+      },
+      {
+        "type": 1,
+        "description": "VC无限橙果汁全场8折"
+      },
+      {
+        "type": 2,
+        "description": "单人精彩套餐"
+      },
+      {
+        "type": 3,
+        "description": "该商家支持发票,请下单写好发票抬头"
+      },
+      {
+        "type": 4,
+        "description": "已加入“外卖保”计划,食品安全保障"
+      }
+    ],
+    "avatar": "http://ybs.ufile.ucloud.com.cn/13982014343/1493970231931.jpg",
+    "pics": [
+      "http://ybs.ufile.ucloud.com.cn/13982014343/1516091419437.jpg",
+      "http://ybs.ufile.ucloud.com.cn/13982014343/1516090912042.jpg",
+      "http://ybs.ufile.ucloud.com.cn/13982014343/1477635657185.jpg",
+      "http://ybs.ufile.ucloud.com.cn/13982014343/1516089125367.jpg"
+    ],
+    "infos": [
+      "该商家支持发票,请下单写好发票抬头",
+      "品类:火锅",
+      "武侯区天府3街1170号",
+      "营业时间:10:00-01:00"
+    ]
+  }
+}
