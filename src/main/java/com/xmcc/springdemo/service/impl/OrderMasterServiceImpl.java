@@ -12,6 +12,7 @@ import com.xmcc.springdemo.exception.CustomException;
 import com.xmcc.springdemo.repository.OrderMasterRepository;
 import com.xmcc.springdemo.service.OrderDetailService;
 import com.xmcc.springdemo.service.OrderMasterService;
+import com.xmcc.springdemo.service.PayService;
 import com.xmcc.springdemo.service.ProductInfoService;
 import com.xmcc.springdemo.util.BigDecimalUtil;
 import com.xmcc.springdemo.util.IDUtils;
@@ -47,6 +48,8 @@ public class OrderMasterServiceImpl implements OrderMasterService {
     private OrderDetailService orderDetailService;
     @Autowired
     private OrderMasterRepository orderMasterRepository;
+    @Autowired
+    private PayService payService;
 
     //生成订单 插入数据库
     @Override
@@ -187,21 +190,23 @@ public class OrderMasterServiceImpl implements OrderMasterService {
         //因为业务层一般不会调用其他模块的dao层
         ResultResponse<List<OrderDetail>> orderDetailListByOrderId = orderDetailService.findOrderDetailListByOrderId(orderId);
         List<OrderDetail> orderDetailList = orderDetailListByOrderId.getData();
-        if(CollectionUtils.isEmpty(orderDetailList)){//直接结束了
-            return ResultResponse.success();
-        }
-        //这里用批量修改操作，需要挨个去查询商品
-        for (OrderDetail orderDetail : orderDetailList) {
-            ResultResponse<Integer> result = productInfoService.incrStockById(orderDetail.getProductQuantity(),orderDetail.getProductId());
-            //不在上面的方法抛出异常 因为有的业务没有修改成功 也是可以的
-            if(result.getData() < 1){
-                //商品下架 也可以修改  只要失败就回滚 不然会丢失商品
-                log.error("商品库存增加失败,商品id为:{},商品名称为:{}",orderDetail.getProductId(),orderDetail.getProductName());
-                throw new CustomException("商品库存增加失败");//抛出异常事务回滚
+        //判断不为空，才进行操作
+        if(!CollectionUtils.isEmpty(orderDetailList)){
+            //这里用批量修改操作，需要挨个去查询商品
+            for (OrderDetail orderDetail : orderDetailList) {
+                ResultResponse<Integer> result = productInfoService.incrStockById(orderDetail.getProductQuantity(),orderDetail.getProductId());
+                //不在上面的方法抛出异常 因为有的业务没有修改成功 也是可以的
+                if(result.getData() < 1){
+                    //商品下架 也可以修改  只要失败就回滚 不然会丢失商品
+                    log.error("商品库存增加失败,商品id为:{},商品名称为:{}",orderDetail.getProductId(),orderDetail.getProductName());
+                    throw new CustomException("商品库存增加失败");//抛出异常事务回滚
+                }
             }
         }
+
         if(orderMaster.getPayStatus()==PayEnum.FINISH.getCode()){
-            //TODO :退款操作 之后再完成
+            log.info("退款:orderid ->",orderMaster.getOrderId());
+            payService.refund(orderMaster);
         }
 
         return ResultResponse.success();

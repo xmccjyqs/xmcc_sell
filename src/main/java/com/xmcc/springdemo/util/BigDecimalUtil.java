@@ -26,4 +26,7 @@ public class BigDecimalUtil {
         return price.multiply(bigDecimal);
     }
 
+    public static boolean equals2(BigDecimal orderAmount, BigDecimal bigDecimal) {
+        return orderAmount.compareTo(bigDecimal)==0;
+    }
 }

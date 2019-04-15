@@ -96,13 +96,12 @@
             <version>2.9.2</version>
         </dependency>
 
-        <!-- 工具包 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
 
-        <!-- 加载静态资源 -->
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-thymeleaf</artifactId>-->
-        <!--</dependency>-->
+        <!-- 工具包 -->
 
         <!-- json格式转换-->
         <!-- https://mvnrepository.com/artifact/org.codehaus.jackson/jackson-mapper-asl -->
@@ -131,7 +130,11 @@
             <version>3.3.0</version>
         </dependency>
 
-      <!--  解决spring boot1.5以上版本@ConfigurationProperties取消location注解-->
+        <dependency>
+            <groupId>cn.springboot</groupId>
+            <artifactId>best-pay-sdk</artifactId>
+            <version>1.1.0</version>
+        </dependency>
 
     </dependencies>
 

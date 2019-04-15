@@ -1,7 +1,9 @@
 package com.xmcc.springdemo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +14,8 @@ import java.math.BigDecimal;
 @Entity
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderDetail implements Serializable {
 
     @Id

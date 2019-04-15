@@ -23,4 +23,9 @@ jackson:
 wechat:
    appid: wxcec0b9e65c084712
    secret: 05a7e861c1985ced86af77fb8f7163bc
+   mchId: 1529533061
+   mchKey: qwertyuiopasdfghjklzxcvbnm123456
+   # 微信退款使用的证书
+   keyPath: I:\xmcc备课\05java初级阶段\day_07_微信授权支付开发\微信服务号信息_资料\证书\1529533061_20190327_cert\apiclient_cert.p12
+   notifyUrl: http://xmccjyqs.natapp1.cc/sell/pay/notify
 
